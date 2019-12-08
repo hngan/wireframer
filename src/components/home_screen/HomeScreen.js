@@ -13,7 +13,9 @@ class HomeScreen extends Component {
         firestore.collection('wireframes').add({
             uid: this.props.auth.uid,
             name: "NONE",
-            containers: [],
+            controls: [],
+            width: 700,
+            height:1000,
             modified: Date.now()
         }).then((list) => {            
             this.props.history.push("wireframe/"+list.id)     

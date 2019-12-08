@@ -7,31 +7,38 @@ import {getFirestore} from 'redux-firestore'
 import M from 'materialize-css'
 import firebase from "firebase";
 import WireframeControls from './WireframeControls'
+import ControlProperties from './ControlProperties';
 
-class ListScreen extends Component {
+class WireframeScreen extends Component {
     state = {
         name: '',
+        width: 0,
+        height: 0
     }
 
     handleChange = (e) => {
         const { target } = e;
-
+        if(target.id === "width" || target.id === "height"){
+            if(parseInt(target.value) > 5000)
+            target.value = 5000
+            else if(parseInt(target.value) < 1)
+            target.value = 1
+        }
         this.setState(state => ({
             [target.id]: target.value,
-        }),()=>{
-           let db = firebase.firestore()
-            db.collection("wireframes").doc(this.props.wireframe.id).update({name: this.state.name, owner:this.state.owner})
-        })
+        }))
     }
 
     close = (event)=>{
+        console.log("Hello")
         this.props.history.goBack()
     }
     
     componentDidMount(){
         console.log(this.props.wireframe)
         if(this.props.wireframe)
-            this.setState({name: this.props.wireframe.name, owner: this.props.wireframe.owner,},()=>{
+            this.setState({name: this.props.wireframe.name, width:this.props.wireframe.width, height:this.props.wireframe.height,
+            controls:this.props.wireframe.controls},()=>{
                 let db = firebase.firestore()
                 db.collection("wireframes").doc(this.props.wireframe.id).update({modified:Date.now()})
             });
@@ -47,11 +54,13 @@ class ListScreen extends Component {
         return <React.Fragment />
         return (
             <>
-            <WireframeControls />
-            <div className="container white" >
-               
-                {/* <ItemsList wireframe={wireframe} history = {this.props.history}/>  */}
+            <WireframeControls close={this.close} zoomIn ={this.zoomIn} zoomOut = {this.zoomOut} name={this.state.name} createInput={this.createInput} handleChange={this.handleChange}
+            createButton = {this.createButton} createLabel = {this.createLabel} createContainer = {this.createContainer} height={this.state.height} width = {this.state.width}/>
+            <ControlProperties />
+            <div className="container white" style={{background:"white", height:"5000px", width:"1000px"}}>
+
             </div>
+           
             </>
         );
     }
@@ -74,4 +83,4 @@ export default compose(
   firestoreConnect([
     { collection: 'wireframes' },
   ]),
-)(ListScreen);
+)(WireframeScreen);
