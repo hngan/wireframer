@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import todoJson from './TestWireframeData.json'
 import { getFirestore } from 'redux-firestore';
 
@@ -35,11 +36,18 @@ class DatabaseTester extends React.Component {
     }
 
     render() {
-        return (
-            <div>
-                <button onClick={this.handleClear}>Clear Database</button>
-                <button onClick={this.handleReset}>Reset Database</button>
-            </div>)
+        if(this.props.auth.uid){
+        if(!this.props.firebase.profile.isEmpty && this.props.firebase.profile.admin){
+            return (
+                <div>
+                    <button onClick={this.handleClear}>Clear Database</button>
+                    <button onClick={this.handleReset}>Reset Database</button>
+                </div>)
+        }
+       else if(this.props.firebase.profile.isEmpty)
+        return<></>
+       return <Redirect to="/home" />;}
+        return <Redirect to="/login" />;
     }
 }
 

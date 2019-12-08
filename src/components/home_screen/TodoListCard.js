@@ -10,6 +10,10 @@ class TodoListCard extends React.Component {
                 <div className="card-content grey-text text-darken-3">
                     <span className="card-title">{todoList.name}</span>
                     <span className="card-body">By: {todoList.owner}</span>
+                    <div style={{position: "relative",float:'right', bottom: "30px", left: "20px"}}
+                    onClick={(event)=>{event.stopPropagation(); console.log("meow")
+                        this.state.modal.open()}}>
+                        <i className = "modal-trigger small material-icons" >close</i></div>
                 </div>
             </div>
         );
