@@ -34,13 +34,15 @@ class RegisterScreen extends Component {
 
   render() {
     const { auth, authError } = this.props;
+    console.log("ERROR",authError)
     if (auth.uid) {
       return <Redirect to="/" />;
     }
 
     return (
       <div className="container">
-        <form onSubmit={this.handleSubmit} className="white">
+        <div className = "row">
+        <form onSubmit={this.handleSubmit} className="col s6 white">
           <h5 className="grey-text text-darken-3">Register</h5>
           <div className="input-field">
             <label htmlFor="email">Email</label>
@@ -63,6 +65,11 @@ class RegisterScreen extends Component {
             {authError ? <div className="red-text center"><p>{authError}</p></div> : null}
           </div>
         </form>
+        <div className="col s6 banner">
+            Wireframe<br />
+            Maker
+          </div>
+        </div>
       </div>
     );
   }

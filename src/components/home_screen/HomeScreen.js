@@ -11,9 +11,9 @@ class HomeScreen extends Component {
     handleNewList = (event) =>{
         const firestore =  getFirestore()
         firestore.collection('wireframes').add({
+            uid: this.props.auth.uid,
             name: "NONE",
-            owner: "NONE",
-            items: [],
+            containers: [],
             modified: Date.now()
         }).then((list) => {            
             this.props.history.push("wireframe/"+list.id)     
@@ -21,7 +21,6 @@ class HomeScreen extends Component {
             console.log(err);
         });
     }
-
     render() {
         if (!this.props.auth.uid) {
             return <Redirect to="/login" />;

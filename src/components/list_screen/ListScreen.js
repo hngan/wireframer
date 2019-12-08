@@ -2,16 +2,15 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import ItemsList from './ItemsList.js'
 import { firestoreConnect } from 'react-redux-firebase';
 import {getFirestore} from 'redux-firestore'
 import M from 'materialize-css'
 import firebase from "firebase";
+import WireframeControls from './WireframeControls'
 
 class ListScreen extends Component {
     state = {
         name: '',
-        owner: '',
     }
 
     handleChange = (e) => {
@@ -21,53 +20,51 @@ class ListScreen extends Component {
             [target.id]: target.value,
         }),()=>{
            let db = firebase.firestore()
-            db.collection("todoLists").doc(this.props.todoList.id).update({name: this.state.name, owner:this.state.owner})
+            db.collection("wireframes").doc(this.props.wireframe.id).update({name: this.state.name, owner:this.state.owner})
         })
     }
 
+    close = (event)=>{
+        this.props.history.goBack()
+    }
+    
     componentDidMount(){
-        if(this.props.todoList)
-            this.setState({name: this.props.todoList.name, owner: this.props.todoList.owner,},()=>{
+        console.log(this.props.wireframe)
+        if(this.props.wireframe)
+            this.setState({name: this.props.wireframe.name, owner: this.props.wireframe.owner,},()=>{
                 let db = firebase.firestore()
-                db.collection("todoLists").doc(this.props.todoList.id).update({modified:Date.now()})
+                db.collection("wireframes").doc(this.props.wireframe.id).update({modified:Date.now()})
             });
     }
     render() {
         console.log(this.props)
         const auth = this.props.auth;
-        const todoList = this.props.todoList;
+        const wireframe = this.props.wireframe;
         if (!auth.uid) {
             return <Redirect to="/" />;
         }
-        if(!todoList)
+        if(!wireframe)
         return <React.Fragment />
         return (
+            <>
+            <WireframeControls />
             <div className="container white" >
-                <h5 className="grey-text text-darken-3" style={{display:'inline',position:"relative", top:"20px"}}>Todo List</h5>
-                <i className = "modal-trigger medium material-icons" style={{float:'right'}} onClick={()=>{this.state.modal.open()}}>delete_forever</i>
                
-                <div className="input-field" style={{marginTop:"50px"}}>
-                    <label className="active" htmlFor="name">Name</label>
-                    <input className="active" type="text" name="name" id="name" onChange={this.handleChange} value={this.state.name} />
-                </div>
-                <div className="input-field">
-                    <label className="active" htmlFor="owner">Owner</label>
-                    <input className="active" type="text" name="owner" id="owner" onChange={this.handleChange} value={this.state.owner} />
-                </div>
-                <ItemsList todoList={todoList} history = {this.props.history}/>
+                {/* <ItemsList wireframe={wireframe} history = {this.props.history}/>  */}
             </div>
+            </>
         );
     }
 }
 
 const mapStateToProps = (state, ownProps) => {
   const { id } = ownProps.match.params;
-  const { todoLists } = state.firestore.data;
-  const todoList = todoLists ? todoLists[id] : null;
-  if(todoList)
-  todoList.id = id;
+  const { wireframes } = state.firestore.data;
+  const wireframe = wireframes ? wireframes[id] : null;
+  if(wireframe)
+  wireframe.id = id;
   return {
-    todoList,
+    wireframe,
     auth: state.firebase.auth,
   };
 };
@@ -75,6 +72,6 @@ const mapStateToProps = (state, ownProps) => {
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
-    { collection: 'todoLists' },
+    { collection: 'wireframes' },
   ]),
 )(ListScreen);

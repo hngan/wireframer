@@ -36,7 +36,6 @@ class wireframeLinks extends React.Component {
     render() {
         const wireframes = this.props.wireframes;
         console.log(wireframes);
-        console.log("HISTORY", this.props.history)
         return (
             <div className="todo-lists section">
                  <div id="modal1" className="modal">
@@ -51,7 +50,8 @@ class wireframeLinks extends React.Component {
                 </div>
                 {wireframes && wireframes.map(wireframe => (
                     //<Link to={'/wireframe/' + wireframe.id} key={wireframe.id}>
-                        <WireframeCard history = {this.props.history} wireframe={wireframe} modal={this.state.modal ?this.state.modal: {} } deleteWireframe={this.setDeleteId}/>
+                        this.props.auth.uid === wireframe.uid ?
+                        <WireframeCard history = {this.props.history} wireframe={wireframe} modal={this.state.modal ?this.state.modal: {} } deleteWireframe={this.setDeleteId}/> : <></>
                     //</Link>
                 ))}
             </div>
