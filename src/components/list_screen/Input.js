@@ -1,9 +1,14 @@
 import React from 'react';
+import Draggable from 'react-draggable'
 
 class Input extends React.Component{
     render(){
         return(
-            <input maxLength="100" className="active" type="text" />
+            <Draggable>
+           <div style={{width:"300px"}}>
+             <input maxLength="100" type="text" readOnly/>
+            </div>
+            </Draggable>
         )
     }
 }

@@ -3,7 +3,7 @@ import React from "react";
 class ControlProperties extends React.Component{
     render(){
         return(
-            <div class="card-panel white" style ={{width: "19%", float:"right"}}>
+            <div className="card-panel white" style ={{width: "19%", right:"0px" ,position: "fixed", zIndex:"1"}}>
             <h5>Properties</h5>
             <br/>
             <div className="input-field" >

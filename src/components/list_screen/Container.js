@@ -1,9 +1,14 @@
 import React from 'react';
+import Draggable from 'react-draggable';
 
 class Container extends React.Component{
     render(){
         return(
-            <div style={{background:"white"}}></div>
+            <Draggable>
+            <div style={{background:"white", height:"100px",width:"100px", border:"1px solid black"}}>
+                
+            </div>
+            </Draggable>
         )
     }
 }

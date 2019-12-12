@@ -1,9 +1,12 @@
 import React from 'react';
+import Draggable from 'react-draggable';
 
 class Label extends React.Component{
     render(){
         return(
-        <div>{this.props.text}</div>
+        <Draggable>  
+        <div><label>{this.props.text}</label></div>
+        </Draggable>
         )
     }
 }
