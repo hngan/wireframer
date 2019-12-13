@@ -17,7 +17,7 @@ class WireframeScreen extends Component {
         width: 0,
         height: 0,
         controls: [],
-        selected: ""
+        selected: -1
     }
 
     handleChange = (e) => {
@@ -31,6 +31,12 @@ class WireframeScreen extends Component {
         this.setState(state => ({
             [target.id]: target.value,
         }))
+    }
+
+    handleItemChange = (event) =>{
+        const { target } = event;
+        this.state.controls[this.state.selected][target.id] = target.value;
+        this.setState({})
     }
 
     close = (event)=>{
@@ -119,7 +125,6 @@ class WireframeScreen extends Component {
 
     select = (event) =>{
         event.stopPropagation()
-        console.log(event.target.getAttribute('itemid'))
         this.setState({selected:event.target.getAttribute('itemid')})
     }
 
@@ -130,8 +135,7 @@ class WireframeScreen extends Component {
 
     keydownHandler = event =>{
         //delete backspace
-        if(event.keyCode === 8){
-            console.log("delete");
+        if(event.keyCode === 46){
             if(this.state.selected !== -1){
             let newControls = this.state.controls.slice(0);
             newControls.splice(parseInt(this.state.selected), 1)
@@ -150,7 +154,7 @@ class WireframeScreen extends Component {
         console.log(this.props.wireframe)
         if(this.props.wireframe)
             this.setState({name: this.props.wireframe.name, width:this.props.wireframe.width, height:this.props.wireframe.height,
-            controls:this.props.wireframe.controls, zoom: 1},()=>{
+            controls:this.props.wireframe.controls, zoom: 1, selected: -1},()=>{
                 let db = firebase.firestore()
                 db.collection("wireframes").doc(this.props.wireframe.id).update({modified:Date.now()})
             });
@@ -171,8 +175,8 @@ class WireframeScreen extends Component {
         return (
             <>
             <WireframeControls close={this.close} zoomIn ={this.zoomIn} zoomOut = {this.zoomOut} name={this.state.name} createInput={this.createInput} handleChange={this.handleChange}
-            createButton = {this.createButton} createLabel = {this.createLabel} createContainer = {this.createContainer} height={this.state.height} width = {this.state.width} save = {this.save}/>
-            <ControlProperties />
+            createButton = {this.createButton} createLabel = {this.createLabel} createContainer = {this.createContainer} save = {this.save}/>
+            {this.state.selected < 0 ? <ControlProperties height={this.state.height} width = {this.state.width} handleChange={this.handleChange}/> : <ControlProperties selected={this.state.controls[this.state.selected]} handleItemChange = {this.handleItemChange} handleChange={this.handleChange}/>}
             <div onClick={this.unselect} className="container white" style={{position:"absolute",left:"0",right:"0", background:"white", height:String(this.state.height*this.state.zoom)+"px", width:String(this.state.width*this.state.zoom)+"px"}}>
                 {this.state.controls.map((element, i) => {
                     if(element.type ==="input") 

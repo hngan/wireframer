@@ -19,7 +19,7 @@ class Input extends React.Component{
             <div style={{position:"absolute", right:"0", top:"0",background:"white", width:"7px",height:"7px", border:"1px solid black"}}></div>
             <div style={{position:"absolute", left:"0", bottom:"0",background:"white", width:"7px",height:"7px", border:"1px solid black"}}></div>
              <div style={{position:"absolute", right:"0", bottom:"0",background:"white", width:"7px",height:"7px", border:"1px solid black"}}></div>
-             <input onClick={this.props.select} itemID={this.props.itemId} maxLength="100" type="text" readOnly/>
+             <input onClick={this.props.select} itemID={this.props.itemId} maxLength="100" type="text" placeholder={this.props.text} readOnly/>
             </div>
             </Draggable>
         )
@@ -27,7 +27,7 @@ class Input extends React.Component{
         return(
             <Draggable bounds="parent">
             <div style={{width:"300px"}}>
-            <input onClick={this.props.select} itemID={this.props.itemId} maxLength="100" type="text" readOnly/>
+            <input onClick={this.props.select} itemID={this.props.itemId} maxLength="100" type="text" placeholder={this.props.text} readOnly/>
             </div>
             </Draggable>
         )

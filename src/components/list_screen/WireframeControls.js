@@ -26,13 +26,6 @@ render(){
         <a className="waves-light btn-small" onClick= {this.props.close}>Close</a>
         </div>
         <br/>
-        <div>
-        <label className="active" htmlFor="height">Height:</label>
-        <input className="active" type="number" name="height" min="1" max="5000" id="height" onChange={this.props.handleChange} value={this.props.height} style={{width:"70px"}}/>
-        <label className="active" htmlFor="width">Width:</label>
-        <input className="active" type="number" name="width" id="width" min="1" max="5000" onChange={this.props.handleChange} value={this.props.width}style={{width:"70px"}} />
-        </div>
-        <br/>
         <div style ={this.styles} onClick={this.props.createContainer}>
           <div style ={{position:"relative",background:"white", width:"150px", height:"70px", left:"20%", top:"10px", border:"1px solid black", color:"black"}}>Empty Container</div>
         <h5>Container</h5>
