@@ -39,6 +39,10 @@ class WireframeScreen extends Component {
         this.setState({})
     }
 
+    updateStuff = () =>{
+        this.setState({})
+    }
+
     close = (event)=>{
         this.props.history.goBack()
     }
@@ -53,11 +57,13 @@ class WireframeScreen extends Component {
         let button = {
             type: "button",
             radius: 0,
-            fColor: "black",
-            bColor: "black",
+            color: "black",
+            borderColor: "black",
             font:12,
-            backColor:"white",
-            thickness: 0,
+            background:"#dddddd",
+            height:"50",
+            width:"50",
+            borderWidth:"1",
             text:"submit"
         };
         let controls = this.state.controls;
@@ -71,10 +77,12 @@ class WireframeScreen extends Component {
             type: "container",
             radius: 0,
             fColor: "black",
-            bColor: "black",
-            font:12,
-            backColor:"white",
-            thickness: 0,
+            borderColor: "black",
+            background:"white",
+            height:"50",
+            width:"50",
+            border:"solid",
+            borderWidth:"1",
         };
         let controls = this.state.controls;
         controls.push(container);
@@ -87,10 +95,12 @@ class WireframeScreen extends Component {
             type: "input",
             radius: 0,
             fColor: "black",
-            bColor: "black",
+            borderColor: "black",
             font:12,
-            backColor:"white",
-            thickness: 0,
+            background:"white",
+            height:"50",
+            width:"50",
+            borderWidth:"1",
             text:"create input"
         };
         let controls = this.state.controls;
@@ -102,12 +112,14 @@ class WireframeScreen extends Component {
         event.stopPropagation();
         let label = {
             type: "label",
-            radius: 0,
-            fColor: "black",
+            radius: "0",
+            color: "black",
             bColor: "black",
-            font:12,
-            backColor:"white",
-            thickness: 0,
+            font:"12",
+            background:"white",
+            height:"50",
+            width:"50",
+            borderWidth:"0",
             text:"Prompt for input:"
         };
         let controls = this.state.controls;
@@ -176,25 +188,27 @@ class WireframeScreen extends Component {
             <>
             <WireframeControls close={this.close} zoomIn ={this.zoomIn} zoomOut = {this.zoomOut} name={this.state.name} createInput={this.createInput} handleChange={this.handleChange}
             createButton = {this.createButton} createLabel = {this.createLabel} createContainer = {this.createContainer} save = {this.save}/>
-            {this.state.selected < 0 ? <ControlProperties height={this.state.height} width = {this.state.width} handleChange={this.handleChange}/> : <ControlProperties selected={this.state.controls[this.state.selected]} handleItemChange = {this.handleItemChange} handleChange={this.handleChange}/>}
+            {this.state.selected < 0 ? <ControlProperties height={this.state.height} width = {this.state.width} handleChange={this.handleChange}/> : <ControlProperties selected={this.state.controls[this.state.selected]} handleItemChange = {this.handleItemChange} handleChange={this.handleChange} update= {this.updateStuff}/>}
+            
             <div onClick={this.unselect} className="container white" style={{position:"absolute",left:"0",right:"0", background:"white", height:String(this.state.height*this.state.zoom)+"px", width:String(this.state.width*this.state.zoom)+"px"}}>
                 {this.state.controls.map((element, i) => {
+                    //console.log(element)
                     if(element.type ==="input") 
                     return (     
-                        this.state.selected == i ? <Input text={element.text} selected={"true"} select={this.select} itemId={i}/> :<Input text={element.text} select={this.select} itemId={i}/>     
+                        this.state.selected == i ? <Input control={element} selected={"true"} select={this.select} itemId={i}/> :<Input control={element} select={this.select} itemId={i}/>     
                     
                     )
                     else if(element.type === "container")
                     return (
-                        this.state.selected == i ? <Container text={element.text} selected={"true"} select={this.select} itemId={i}/>:<Container text={element.text} select={this.select} itemId={i}/>   
+                        this.state.selected == i ? <Container control={element} selected={"true"} select={this.select} itemId={i}/>:<Container control={element} select={this.select} itemId={i}/>   
                     )
                     else if(element.type === "label")
                     return(
-                        this.state.selected == i ? <Label text={element.text} selected={"true"} select={this.select} itemId={i}/>:<Label text={element.text} select={this.select} itemId={i}/>
+                        this.state.selected == i ? <Label control={element} selected={"true"} select={this.select} itemId={i}/>:<Label control={element} select={this.select} itemId={i}/>
                    )
                     else
                    return( 
-                    this.state.selected == i ? <Button text={element.text} selected={"true"} select={this.select} itemId={i}/>:<Button text={element.text} select={this.select} itemId={i}/>
+                    this.state.selected == i ? <Button control={element} selected={"true"} select={this.select} itemId={i}/>:<Button control={element} select={this.select} itemId={i}/>
                    )
                 })
                 }

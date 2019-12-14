@@ -1,33 +1,48 @@
 import React from 'react';
-import Draggable from 'react-draggable';
+import { Rnd } from 'react-rnd';
 
 class Container extends React.Component{
-    style={
-        background: this.props.background || "#dddddd",
-        font: this.props.font || "14",
-        borderColor: this.props.borderColor || "black",
-        borderWidth: this.props.borderWidth || "1px",
-        color: this.props.color || "black",
-        borderRadius: this.props.radius || "0"
-    }
-    render(){ 
+    
+    render(){
+        const control = this.props.control
         if(this.props.selected)
         return(
-            <Draggable bounds="parent">
-            <div itemID={this.props.itemId} onClick={this.props.select} style={{background:"white", height:"100px",width:"100px", border:"1px solid black"}}>
+            <Rnd bounds="parent">
+            <div style={{display:"inline-block"}}>
             <div style={{position:"absolute", left:"0", top:"0",background:"white", width:"7px",height:"7px", border:"1px solid black"}}></div>
             <div style={{position:"absolute", right:"0", top:"0",background:"white", width:"7px",height:"7px", border:"1px solid black"}}></div>
             <div style={{position:"absolute", left:"0", bottom:"0",background:"white", width:"7px",height:"7px", border:"1px solid black"}}></div>
             <div style={{position:"absolute", right:"0", bottom:"0",background:"white", width:"7px",height:"7px", border:"1px solid black"}}></div>
+            
+            <div itemID={this.props.itemId} onClick={this.props.select} style={{
+            background: control.background,
+            borderStyle: "solid",
+            borderWidth: control.borderWidth +"px",
+            borderColor: control.borderColor ,
+            borderRadius: String(control.radius) +"px",
+            height: control.height +"px",
+            width: control.width +"px" 
+    
+        }}>
+           </div>
             </div>
-            </Draggable>
+            </Rnd>
         )
         else
         return(
-            <Draggable bounds="parent">
-            <div onClick={this.props.select} itemID={this.props.itemId} style={{background:"white", height:"100px",width:"100px", border:"1px solid black"}}>
+            <Rnd bounds="parent">
+            <div onClick={this.props.select} itemID={this.props.itemId} style={{
+            background: control.background,
+            borderStyle: "solid",
+            borderWidth: control.borderWidth +"px",
+            borderColor: control.borderColor ,
+            borderRadius: String(control.radius) +"px",
+            height: control.height +"px",
+            width: control.width +"px" 
+    
+        }}>
             </div>
-            </Draggable>
+            </Rnd>
         )
     }
 }
