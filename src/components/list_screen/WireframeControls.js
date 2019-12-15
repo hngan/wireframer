@@ -20,8 +20,8 @@ render(){
                 <br/>
         </div>
         <div>
-        <a className="waves-light btn-small"><i className = " small material-icons" >zoom_in</i></a>
-        <a className="waves-light btn-small"><i className = "small material-icons" >zoom_out</i></a>
+        <a className="waves-light btn-small" onClick={this.props.zoomIn}><i className = " small material-icons" >zoom_in</i></a>
+        <a className="waves-light btn-small" onClick={this.props.zoomOut}><i className = "small material-icons" >zoom_out</i></a>
         <a className="waves-light btn-small" onClick= {this.props.save}>Save</a>
         <a className="waves-light btn-small" onClick= {this.props.close}>Close</a>
         </div>

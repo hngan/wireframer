@@ -135,11 +135,11 @@ class WireframeScreen extends Component {
     }
 
     zoomIn = (event) =>{
-        this.setState({zoom: this.state.zoom * 2})
+        this.setState({zoom: this.state.zoom * 1.5})
     }
 
     zoomOut = (event) =>{
-        this.setState({zoom: this.state.zoom / 2})
+        this.setState({zoom: this.state.zoom / 1.5})
     }
 
     select = (event) =>{
@@ -149,7 +149,7 @@ class WireframeScreen extends Component {
 
     unselect = (event) =>{
         event.stopPropagation()
-        this.setState({selected: -1})
+        this.setState({selected: -1},()=>{this.updateStuff()})
     }
 
     keydownHandler = event =>{
@@ -183,6 +183,7 @@ class WireframeScreen extends Component {
     }
 
     render() {
+        console.log(this.state.zoom)
         const auth = this.props.auth;
         const wireframe = this.props.wireframe;
         if (!auth.uid) {
@@ -198,7 +199,8 @@ class WireframeScreen extends Component {
             borderColor={this.state.borderColor} borderWidth={this.state.borderWidth} borderRadius={this.state.borderRadius} update= {this.updateStuff}/> : 
             <ControlProperties selected={this.state.controls[this.state.selected]} handleItemChange = {this.handleItemChange} update= {this.updateStuff}/>}
             
-            <div onClick={this.unselect} className="container" style={{position:"absolute",left:"0",right:"0", background:this.state.background, height:String(this.state.height*this.state.zoom)+"px", width:String(this.state.width*this.state.zoom)+"px", borderColor:this.state.borderColor, borderWidth:this.state.borderWidth+"px", borderRadius:this.state.borderRadius+"px", borderStyle:"solid"}}>
+            <div onClick={this.unselect} className="container" style={{  transform: `scale(${this.state.zoom})`,
+  transformOrigin: "0 0",position:"absolute",left:"0",right:"0", background:this.state.background, height:String(this.state.height*this.state.zoom)+"px", width:String(this.state.width*this.state.zoom)+"px", borderColor:this.state.borderColor, borderWidth:this.state.borderWidth+"px", borderRadius:this.state.borderRadius+"px", borderStyle:"solid"}}>
                 {this.state.controls.map((element, i) => {
                     //console.log(element)
                     if(element.type ==="input") 
