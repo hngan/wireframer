@@ -170,7 +170,14 @@ class WireframeScreen extends Component {
         }
         //copy ctrl + d
         else if(event.keyCode===68 && event.ctrlKey){
-            this.setState({})
+            if(this.state.selected >= 0){
+                let dupe = {... this.state.controls[parseInt(this.state.selected)]}
+                dupe.x += 100;
+                dupe.y +=100;
+                this.state.controls.push(dupe);
+                this.setState({})
+            }
+           
         }
 }
 
