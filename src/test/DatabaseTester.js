@@ -17,6 +17,13 @@ class DatabaseTester extends React.Component {
                 fireStore.collection('wireframes').doc(doc.id).delete();
             })
         });
+        fireStore.collection('users').get().then(function(querySnapshot){
+            querySnapshot.forEach(function(doc) {
+                console.log("deleting " + doc.id);
+                if(!doc.data().admin)
+                fireStore.collection('users').doc(doc.id).delete();
+            })
+        });
     }
 
     handleReset = () => {
@@ -24,8 +31,14 @@ class DatabaseTester extends React.Component {
         todoJson.wireframes.forEach(wireframeJson => {
             fireStore.collection('wireframes').add({
                     name: wireframeJson.name,
-                    owner: wireframeJson.owner,
-                    items: wireframeJson.items,
+                    uid: wireframeJson.uid,
+                    controls: wireframeJson.controls,
+                    height: wireframeJson.height,
+                    width: wireframeJson.width,
+                    background:wireframeJson.background,
+                    borderWidth: wireframeJson.borderWidth,
+                    borderRadius: wireframeJson.borderRadius,
+                    borderColor: wireframeJson.borderColor,
                     modified: Date.now()
                 }).then(() => {
                     console.log("DATABASE RESET");

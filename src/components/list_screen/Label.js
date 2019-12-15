@@ -29,7 +29,9 @@ class Label extends React.Component{
              borderRadius: control.radius+"px",
              display: "inline-block",
              width: control.width,
-             height:control.height
+             height:control.height,
+             overflow:"hidden",
+             textAlign:"center"
         }}>
         <div style={{position:"absolute", left:"0", top:"0",background:"white", width:"7px",height:"7px", border:"1px solid black"}}></div>
         <div style={{position:"absolute", right:"0", top:"0",background:"white", width:"7px",height:"7px", border:"1px solid black"}}></div>
@@ -64,7 +66,9 @@ class Label extends React.Component{
                  borderRadius: control.radius+"px",
                  display: "inline-block",
                  width: control.width,
-                 height:control.height
+                 height:control.height,
+                 overflow:"hidden",
+                 textAlign:"center"
             }}>
             {control.text}</div>
         </Rnd>

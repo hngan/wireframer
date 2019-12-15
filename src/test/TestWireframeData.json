@@ -1,172 +1,197 @@
 {
-    "todoLists": [
+    "wireframes": [
         {
-            "key": 0,
-            "name": "Things I am Never Gonna Do",
-            "owner": "Rick Astley",
-            "items": [
-                {
-                    "key": 0,
-                    "description": "Give You Up",
-                    "due_date": "2019-09-30",
-                    "assigned_to": "Rick",
-                    "completed": true
-                },
-                {
-                    "key": 1,
-                    "description": "Say Goodbye",
-                    "due_date": "2019-10-15",
-                    "assigned_to": "Rick",
-                    "completed": false
-                },
-                {
-                    "key": 2,
-                    "description": "Make You Cry",
-                    "due_date": "2019-12-30",
-                    "assigned_to": "Bob",
-                    "completed": false
-                }
-            ]
-        },
-        {
-            "key": 1,
-            "name": "House Repairs",
-            "owner": "Bob Vila",
-            "items": [
-                {
-                    "key": 0,
-                    "description": "Repair Leaky Kitchen Sink",
-                    "due_date": "2019-07-11",
-                    "assigned_to": "Rick",
-                    "completed": true
-                },
-                {
-                    "key": 1,
-                    "description": "Fix Leak in Roof",
-                    "due_date": "2019-10-15",
-                    "assigned_to": "Jane",
-                    "completed": false
-                },
-                {
-                    "key": 2,
-                    "description": "Paint Interior",
-                    "due_date": "2019-11-11",
-                    "assigned_to": "Joe",
-                    "completed": false
-                },
-                {
-                    "key": 3,
-                    "description": "Plant Flowers",
-                    "due_date": "2019-08-17",
-                    "assigned_to": "Ryan",
-                    "completed": true
-                },
-                {
-                    "key": 4,
-                    "description": "Repair Front Door",
-                    "due_date": "2019-10-31",
-                    "assigned_to": "Glenda",
-                    "completed": false
-                }
-            ]
-        },
-        {
-            "key": 2,
-            "name": "Courses to Take",
-            "owner": "Joe Student",
-            "items": [
-                {
-                    "key": 0,
-                    "description": "CSE 114",
-                    "due_date": "2018-12-31",
-                    "assigned_to": "Joe",
-                    "completed": true
-                },
-                {
-                    "key": 1,
-                    "description": "CSE 215",
-                    "due_date": "2018-12-31",
-                    "assigned_to": "Joe",
-                    "completed": true
-                },
-                {
-                    "key": 2,
-                    "description": "AMS 301",
-                    "due_date": "2018-12-31",
-                    "assigned_to": "Joe",
-                    "completed": true
-                },
-                {
-                    "key": 3,
-                    "description": "CSE 214",
-                    "due_date": "2019-05-31",
-                    "assigned_to": "Joe",
-                    "completed": true
-                },
-                {
-                    "key": 4,
-                    "description": "AMS 310",
-                    "due_date": "2019-05-31",
-                    "assigned_to": "Joe",
-                    "completed": true
-                },
-                {
-                    "key": 5,
-                    "description": "CSE 216",
-                    "due_date": "2019-12-31",
-                    "assigned_to": "Joe",
-                    "completed": false
-                },
-                {
-                    "key": 6,
-                    "description": "CSE 220",
-                    "due_date": "2019-12-31",
-                    "assigned_to": "Joe",
-                    "completed": false
-                },
-                {
-                    "key": 7,
-                    "description": "CSE 316",
-                    "due_date": "2020-05-31",
-                    "assigned_to": "Joe",
-                    "completed": false
-                },
-                {
-                    "key": 8,
-                    "description": "CSE 303",
-                    "due_date": "2020-05-31",
-                    "assigned_to": "Joe",
-                    "completed": false
-                },
-                {
-                    "key": 9,
-                    "description": "CSE 380",
-                    "due_date": "2020-05-31",
-                    "assigned_to": "Joe",
-                    "completed": false
-                },
-                {
-                    "key": 10,
-                    "description": "CSE 373",
-                    "due_date": "2020-12-31",
-                    "assigned_to": "Joe",
-                    "completed": false
-                },
-                {
-                    "key": 11,
-                    "description": "CSE 381",
-                    "due_date": "2020-12-31",
-                    "assigned_to": "Joe",
-                    "completed": false
-                },
-                {
-                    "key": 12,
-                    "description": "CSE 416",
-                    "due_date": "2020-12-31",
-                    "assigned_to": "Joe",
-                    "completed": false
-                }
-            ]
-        }
+            "background": "#73d8ff",
+            "borderColor": "#f44e3b",
+            "borderRadius": "0",
+            "borderWidth": "10",
+            "controls": [
+              {
+                "bColor": "black",
+                "background": "#a4dd00",
+                "borderWidth": "0",
+                "color": "#f44e3b",
+                "font": "30",
+                "height": "102px",
+                "radius": "0",
+                "text": "MERRY CHRISTMAS CARD :D",
+                "type": "label",
+                "width": "399px",
+                "x": 128,
+                "y": 236
+              },
+              {
+                "background": "#f44e3b",
+                "borderColor": "black",
+                "borderWidth": "3",
+                "color": "#dbdf00",
+                "font": "18",
+                "height": "41px",
+                "radius": "20",
+                "text": "CLICK TO OPEN CARD",
+                "type": "button",
+                "width": "216px",
+                "x": 224,
+                "y": 548
+              },
+              {
+                "background": "white",
+                "borderColor": "black",
+                "borderWidth": "1",
+                "fColor": "black",
+                "font": 12,
+                "height": "50px",
+                "radius": 0,
+                "text": "INSERT RECIPIENT NAME HERE",
+                "type": "input",
+                "width": "179px",
+                "x": 231,
+                "y": 399
+              }
+            ],
+            "height": 1000,
+            "modified": 1576399238000,
+            "name": "Merry Christmas",
+            "uid": "FEftnZBXkhbgWb6jGybLVBQRA5S2",
+            "width": 700
+          },
+          {
+            "background": "white",
+            "borderColor": "black",
+            "borderRadius": "30",
+            "borderWidth": "30",
+            "controls": [
+              {
+                "bColor": "black",
+                "background": "white",
+                "borderWidth": "1",
+                "color": "#000000",
+                "font": "20",
+                "height": "326px",
+                "radius": "0",
+                "text": "Login:",
+                "type": "label",
+                "width": "243px",
+                "x": 141,
+                "y": 200
+              },
+              {
+                "background": "white",
+                "borderColor": "black",
+                "borderWidth": "1",
+                "fColor": "black",
+                "font": 12,
+                "height": "33px",
+                "radius": 0,
+                "text": "Username",
+                "type": "input",
+                "width": "139px",
+                "x": 160,
+                "y": 281
+              },
+              {
+                "background": "white",
+                "borderColor": "black",
+                "borderWidth": "1",
+                "fColor": "black",
+                "font": 12,
+                "height": "33px",
+                "radius": 0,
+                "text": "Password",
+                "type": "input",
+                "width": "139px",
+                "x": 161,
+                "y": 337
+              },
+              {
+                "background": "#dddddd",
+                "borderColor": "black",
+                "borderWidth": "1",
+                "color": "black",
+                "font": 12,
+                "height": "25px",
+                "radius": 0,
+                "text": "submit",
+                "type": "button",
+                "width": "63px",
+                "x": 174,
+                "y": 396
+              }
+            ],
+            "height": "800",
+            "modified": 1576399976388,
+            "name": "iPad Login",
+            "uid": "FEftnZBXkhbgWb6jGybLVBQRA5S2",
+            "width": "600"
+          },
+          {
+            "background": "#73d8ff",
+            "borderColor": "#68bc00",
+            "borderRadius": "50",
+            "borderWidth": "100",
+            "controls": [
+              {
+                "background": "#68bc00",
+                "border": "solid",
+                "borderColor": "#b0bc00",
+                "borderWidth": "10",
+                "fColor": "black",
+                "height": "201px",
+                "radius": "3",
+                "type": "container",
+                "width": "290px",
+                "x": 504,
+                "y": 198
+              },
+              {
+                "bColor": "black",
+                "background": "#999999",
+                "borderWidth": "0",
+                "color": "#7b64ff",
+                "font": "40",
+                "height": "394px",
+                "radius": "0",
+                "text": "Prompt for input:",
+                "type": "label",
+                "width": "192px",
+                "x": 888,
+                "y": 226
+              },
+              {
+                "background": "#68bc00",
+                "borderColor": "#68ccca",
+                "borderWidth": "4",
+                "color": "#000000",
+                "fColor": "black",
+                "font": 12,
+                "height": "46px",
+                "radius": 0,
+                "text": "INPUT BOX",
+                "type": "input",
+                "width": "227px",
+                "x": 564,
+                "y": 491
+              },
+              {
+                "background": "#194d33",
+                "borderColor": "black",
+                "borderWidth": "1",
+                "color": "#73d8ff",
+                "font": "40",
+                "height": "134px",
+                "radius": "80",
+                "text": "Button",
+                "type": "button",
+                "width": "187px",
+                "x": 702,
+                "y": 611
+              }
+            ],
+            "height": "1000",
+            "modified": 1576402001370,
+            "name": "Random Stuff",
+            "uid": "FEftnZBXkhbgWb6jGybLVBQRA5S2",
+            "width": "1500"
+          }
     ]
 }
