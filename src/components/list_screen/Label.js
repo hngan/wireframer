@@ -6,7 +6,11 @@ class Label extends React.Component{
         console.log(control)
         if(this.props.selected)
         return(
-        <Rnd bounds="parent">  
+        <Rnd bounds="parent"
+        position={{ x: this.props.control.x, y: this.props.control.y }}
+        onDragStop={(e, d) => {
+            this.props.control.x= d.x 
+            this.props.control.y= d.y }}>  
         <div onClick={this.props.select} itemID={this.props.itemId} style={{
              background: control.background,
              fontSize: control.font+"px",
@@ -27,7 +31,11 @@ class Label extends React.Component{
         )
         else
         return(
-            <Rnd bounds="parent">  
+            <Rnd bounds="parent"
+            position={{ x: this.props.control.x, y: this.props.control.y }}
+            onDragStop={(e, d) => {
+            this.props.control.x= d.x 
+            this.props.control.y= d.y }}>  
             <div onClick={this.props.select} itemID={this.props.itemId} style={{
                  background: control.background,
                  fontSize: control.font+"px",

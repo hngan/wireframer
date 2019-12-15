@@ -6,7 +6,11 @@ class Input extends React.Component{
         const control = this.props.control;
         if(this.props.selected)
         return(
-            <Rnd bounds="parent">
+            <Rnd bounds="parent"
+            position={{ x: this.props.control.x, y: this.props.control.y }}
+            onDragStop={(e, d) => {
+            this.props.control.x= d.x 
+            this.props.control.y= d.y }}>
            <div style={{display:"inline-block"}}>
            <div style={{position:"absolute", left:"0", top:"0",background:"white", width:"7px",height:"7px", border:"1px solid black"}}></div>
             <div style={{position:"absolute", right:"0", top:"0",background:"white", width:"7px",height:"7px", border:"1px solid black"}}></div>
@@ -29,7 +33,11 @@ class Input extends React.Component{
         )
         else
         return(
-            <Rnd bounds="parent">
+            <Rnd bounds="parent"
+            position={{ x: this.props.control.x, y: this.props.control.y }}
+            onDragStop={(e, d) => {
+            this.props.control.x= d.x 
+            this.props.control.y= d.y }}>
             <div style={{display:"inline-block"}}>
             <input className="browser-default" onClick={this.props.select} itemID={this.props.itemId} maxLength="100" type="text" value={control.text} 
             style={

@@ -45,7 +45,6 @@ class ControlProperties extends React.Component{
         this.props.update()
     }
     componentWillReceiveProps(){
-        console.log("huh", this.props)
         this.setState({height:this.props.height, width:this.props.width, background:this.props.background, borderColor:this.props.borderColor, borderWidth:this.props.borderWidth, borderRadius:this.props.borderRadius, enable:false})
     }
     render(){

@@ -64,7 +64,9 @@ class WireframeScreen extends Component {
             height:"50",
             width:"50",
             borderWidth:"1",
-            text:"submit"
+            text:"submit",
+            x: 0,
+            y: 0
         };
         let controls = this.state.controls;
         controls.push(button)
@@ -83,6 +85,8 @@ class WireframeScreen extends Component {
             width:"50",
             border:"solid",
             borderWidth:"1",
+            x: 0,
+            y: 0
         };
         let controls = this.state.controls;
         controls.push(container);
@@ -101,7 +105,9 @@ class WireframeScreen extends Component {
             height:"50",
             width:"50",
             borderWidth:"1",
-            text:"create input"
+            text:"create input",
+            x: 0,
+            y: 0
         };
         let controls = this.state.controls;
         controls.push(input);
@@ -127,7 +133,9 @@ class WireframeScreen extends Component {
             height:"50",
             width:"50",
             borderWidth:"0",
-            text:"Prompt for input:"
+            text:"Prompt for input:",
+            x: 0,
+            y: 0
         };
         let controls = this.state.controls;
         controls.push(label);
@@ -135,11 +143,11 @@ class WireframeScreen extends Component {
     }
 
     zoomIn = (event) =>{
-        this.setState({zoom: this.state.zoom * 1.5})
+        this.setState({zoom: this.state.zoom * 1.5},()=>{this.setState({})})
     }
 
     zoomOut = (event) =>{
-        this.setState({zoom: this.state.zoom / 1.5})
+        this.setState({zoom: this.state.zoom / 1.5},()=>{this.setState({})})
     }
 
     select = (event) =>{
@@ -161,9 +169,7 @@ class WireframeScreen extends Component {
             this.setState({selected: -1, controls:newControls})}
         }
         //copy ctrl + d
-        else if(event.keyCode===89 && event.ctrlKey){
-            this.props.todoList.owner = this.state.listOwner.name;
-            this.props.todoList.name = this.state.listName.name;
+        else if(event.keyCode===68 && event.ctrlKey){
             this.setState({})
         }
 }
