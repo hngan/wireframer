@@ -16,6 +16,10 @@ class HomeScreen extends Component {
             controls: [],
             width: 700,
             height:1000,
+            background:"white",
+            borderWidth:"0",
+            borderColor:"black",
+            borderRadius:"0",
             modified: Date.now()
         }).then((list) => {            
             this.props.history.push("wireframe/"+list.id)     

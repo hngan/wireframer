@@ -9,12 +9,12 @@ class Label extends React.Component{
         <Rnd bounds="parent">  
         <div onClick={this.props.select} itemID={this.props.itemId} style={{
              background: control.background,
-             fontSize: control.font,
+             fontSize: control.font+"px",
              borderStyle:"solid",
              borderColor: control.borderColor,
-             borderWidth: control.borderWidth,
+             borderWidth: control.borderWidth+"px",
              color: control.color,
-             borderRadius: control.radius,
+             borderRadius: control.radius+"px",
              display: "inline-block",
         }}>
         <div style={{position:"absolute", left:"0", top:"0",background:"white", width:"7px",height:"7px", border:"1px solid black"}}></div>

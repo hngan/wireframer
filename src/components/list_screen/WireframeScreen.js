@@ -49,7 +49,7 @@ class WireframeScreen extends Component {
     
     save = (event)=>{
         firebase.firestore().collection("wireframes").doc(this.props.wireframe.id).update({modified:Date.now(), height:this.state.height, width: this.state.width,
-        name: this.state.name, controls:this.state.controls})
+        name: this.state.name, controls:this.state.controls, background:this.state.background, borderColor:this.state.borderColor, borderWidth:this.state.borderWidth, borderRadius:this.state.borderRadius})
         this.props.history.goBack()
     }
     createButton = (event)=>{
@@ -108,6 +108,13 @@ class WireframeScreen extends Component {
         this.setState({controls:controls});
     }
 
+    updateWireframe(height, width, background, borderColor, borderRadius, borderWidth){
+        console.log(background)
+        this.setState({height:height, width:width, background:background, borderColor:borderColor, borderRadius:borderRadius, borderWidth: borderWidth},
+            ()=>{this.setState({})});
+    
+    }
+
     createLabel = (event)=>{
         event.stopPropagation();
         let label = {
@@ -163,10 +170,9 @@ class WireframeScreen extends Component {
 
     componentDidMount(){
         document.addEventListener('keydown',this.keydownHandler);
-        console.log(this.props.wireframe)
         if(this.props.wireframe)
             this.setState({name: this.props.wireframe.name, width:this.props.wireframe.width, height:this.props.wireframe.height,
-            controls:this.props.wireframe.controls, zoom: 1, selected: -1},()=>{
+            controls:this.props.wireframe.controls, zoom: 1, selected: -1, background:this.props.wireframe.background, borderColor:this.props.wireframe.borderColor, borderWidth:this.props.wireframe.borderWidth, borderRadius:this.props.wireframe.borderRadius},()=>{
                 let db = firebase.firestore()
                 db.collection("wireframes").doc(this.props.wireframe.id).update({modified:Date.now()})
             });
@@ -188,9 +194,11 @@ class WireframeScreen extends Component {
             <>
             <WireframeControls close={this.close} zoomIn ={this.zoomIn} zoomOut = {this.zoomOut} name={this.state.name} createInput={this.createInput} handleChange={this.handleChange}
             createButton = {this.createButton} createLabel = {this.createLabel} createContainer = {this.createContainer} save = {this.save}/>
-            {this.state.selected < 0 ? <ControlProperties height={this.state.height} width = {this.state.width} handleChange={this.handleChange}/> : <ControlProperties selected={this.state.controls[this.state.selected]} handleItemChange = {this.handleItemChange} handleChange={this.handleChange} update= {this.updateStuff}/>}
+            {this.state.selected < 0 ? <ControlProperties updateWireframe={this.updateWireframe.bind(this)} height={this.state.height} width = {this.state.width} background={this.state.background} 
+            borderColor={this.state.borderColor} borderWidth={this.state.borderWidth} borderRadius={this.state.borderRadius} update= {this.updateStuff}/> : 
+            <ControlProperties selected={this.state.controls[this.state.selected]} handleItemChange = {this.handleItemChange} update= {this.updateStuff}/>}
             
-            <div onClick={this.unselect} className="container white" style={{position:"absolute",left:"0",right:"0", background:"white", height:String(this.state.height*this.state.zoom)+"px", width:String(this.state.width*this.state.zoom)+"px"}}>
+            <div onClick={this.unselect} className="container" style={{position:"absolute",left:"0",right:"0", background:this.state.background, height:String(this.state.height*this.state.zoom)+"px", width:String(this.state.width*this.state.zoom)+"px", borderColor:this.state.borderColor, borderWidth:this.state.borderWidth+"px", borderRadius:this.state.borderRadius+"px", borderStyle:"solid"}}>
                 {this.state.controls.map((element, i) => {
                     //console.log(element)
                     if(element.type ==="input") 
