@@ -14,6 +14,7 @@ class DatabaseTester extends React.Component {
         fireStore.collection('wireframes').get().then(function(querySnapshot){
             querySnapshot.forEach(function(doc) {
                 console.log("deleting " + doc.id);
+                console.log(doc.data());
                 fireStore.collection('wireframes').doc(doc.id).delete();
             })
         });

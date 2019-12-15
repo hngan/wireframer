@@ -192,6 +192,75 @@
             "name": "Random Stuff",
             "uid": "FEftnZBXkhbgWb6jGybLVBQRA5S2",
             "width": "1500"
+          },
+          {
+            "background": "#d33115",
+            "borderColor": "#fcdc00",
+            "borderRadius": "50",
+            "borderWidth": "20",
+            "controls": [
+              {
+                "background": "#fcdc00",
+                "border": "solid",
+                "borderColor": "black",
+                "borderWidth": "1",
+                "fColor": "black",
+                "height": "361px",
+                "radius": 0,
+                "type": "container",
+                "width": "174px",
+                "x": 61,
+                "y": 63
+              },
+              {
+                "background": "#fb9e00",
+                "borderColor": "black",
+                "borderWidth": "1",
+                "color": "#000000",
+                "fColor": "black",
+                "font": 12,
+                "height": "34px",
+                "radius": 0,
+                "text": "Harrison",
+                "type": "input",
+                "width": "120px",
+                "x": 83,
+                "y": 270
+              },
+              {
+                "background": "#73d8ff",
+                "borderColor": "#fb9e00",
+                "borderWidth": "3",
+                "color": "#fa28ff",
+                "font": 12,
+                "height": "29px",
+                "radius": 0,
+                "text": "submit",
+                "type": "button",
+                "width": "64px",
+                "x": 110,
+                "y": 348
+              },
+              {
+                "bColor": "black",
+                "background": "#fcdc00",
+                "borderWidth": "0",
+                "color": "#fb9e00",
+                "font": "15",
+                "height": "27px",
+                "radius": "0",
+                "text": "Enter Your Name:",
+                "type": "label",
+                "width": "111px",
+                "x": 86,
+                "y": 216
+              }
+            ],
+            "height": "500",
+            "modified": 1576450334282,
+            "name": "Sample Card",
+            "uid": "FEftnZBXkhbgWb6jGybLVBQRA5S2",
+            "width": "300"
           }
     ]
 }
