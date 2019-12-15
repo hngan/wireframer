@@ -42,8 +42,10 @@ class HomeScreen extends Component {
 
                     <div className="col s8">
                         <div className="banner">
-                            Wireframe<br />
-                            Maker
+                        <br/>
+                        Wireframer
+                        <br/>
+                        <br/>
                         </div>
                         
                         <div className="home_new_list_container">

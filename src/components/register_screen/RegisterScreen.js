@@ -66,8 +66,10 @@ class RegisterScreen extends Component {
           </div>
         </form>
         <div className="col s6 banner">
-            Wireframe<br />
-            Maker
+          <br/>
+            Wireframer
+            <br/>
+            <br/>
           </div>
         </div>
       </div>
