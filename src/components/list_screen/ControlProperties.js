@@ -79,7 +79,7 @@ class ControlProperties extends React.Component{
                     <input maxLength="30" className="active" type="number" min="1" name="radius" id="borderRadius" onChange={this.handleChange} value={this.state.borderRadius}/>
                 </div>
             
-                {this.state.enable ? <a className="waves-light btn" onClick={this.updateWireframe} >Update Wireframe</a>:<a className="waves-light btn" disabled>Update Wireframe</a>}
+                {this.state.enable ? <a className="waves-light btn" onClick={this.updateWireframe} >Update!</a>:<a className="waves-light btn" disabled>Update Wireframe</a>}
             </div> 
         )
 

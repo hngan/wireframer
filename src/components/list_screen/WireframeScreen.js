@@ -143,11 +143,14 @@ class WireframeScreen extends Component {
     }
 
     zoomIn = (event) =>{
-        this.setState({zoom: this.state.zoom * 1.5},()=>{this.setState({})})
+        if(this.state.zoom < 4)
+        this.setState({zoom: this.state.zoom * 2},()=>{setTimeout(()=>{this.setState({})}, 1100)
+    })
     }
 
     zoomOut = (event) =>{
-        this.setState({zoom: this.state.zoom / 1.5},()=>{this.setState({})})
+        if(this.state.zoom > 0.25)
+        this.setState({zoom: this.state.zoom / 2},()=>{setTimeout(()=>{console.log("CALLED");this.setState({})}, 1100)})
     }
 
     select = (event) =>{
@@ -166,7 +169,7 @@ class WireframeScreen extends Component {
             if(this.state.selected !== -1){
             let newControls = this.state.controls.slice(0);
             newControls.splice(parseInt(this.state.selected), 1)
-            this.setState({selected: -1, controls:newControls})}
+            this.setState({selected: -1, controls:newControls},()=>this.updateStuff())}
         }
         //copy ctrl + d
         else if(event.keyCode===68 && event.ctrlKey){
@@ -196,6 +199,7 @@ class WireframeScreen extends Component {
     }
 
     render() {
+        console.log(this.state.zoom)
         const auth = this.props.auth;
         const wireframe = this.props.wireframe;
         if (!auth.uid) {
@@ -211,26 +215,26 @@ class WireframeScreen extends Component {
             borderColor={this.state.borderColor} borderWidth={this.state.borderWidth} borderRadius={this.state.borderRadius} update= {this.updateStuff}/> : 
             <ControlProperties selected={this.state.controls[this.state.selected]} handleItemChange = {this.handleItemChange} update= {this.updateStuff}/>}
             
-            <div onClick={this.unselect} style={{ margin:"auto", transform: `scale(${this.state.zoom})`,
-        transformOrigin: "0 0",position:"absolute",left:"0",right:"0", background:this.state.background, height:String(this.state.height*this.state.zoom)+"px", width:String(this.state.width*this.state.zoom)+"px", borderColor:this.state.borderColor, borderWidth:this.state.borderWidth+"px", borderRadius:this.state.borderRadius+"px", borderStyle:"solid"}}>
+            <div onClick={this.unselect} style={{ margin:"auto", transform: `scale(${this.state.zoom})`,transition:"1s ease-in-out",transformOrigin: "0 0",
+            position:"absolute",left:"0",right:"0", background:this.state.background, height:this.state.height+"px", width:this.state.width+"px", borderColor:this.state.borderColor, borderWidth:this.state.borderWidth+"px", borderRadius:this.state.borderRadius+"px", borderStyle:"solid"}}>
                 {this.state.controls.map((element, i) => {
                     //console.log(element)
                     if(element.type ==="input") 
                     return (     
-                        this.state.selected == i ? <Input control={element} selected={"true"} select={this.select} itemId={i} update= {this.updateStuff}/> :<Input control={element} select={this.select} itemId={i} update= {this.updateStuff} zoom = {this.state.zoom}/>     
+                        this.state.selected == i ? <Input control={element} selected={"true"} select={this.select} itemId={i} update= {this.updateStuff}  zoom2 = {this.state.zoom}/> :<Input control={element} select={this.select} itemId={i} update= {this.updateStuff}  zoom2 = {this.state.zoom}/>     
                     
                     )
                     else if(element.type === "container")
                     return (
-                        this.state.selected == i ? <Container control={element} selected={"true"} select={this.select} update= {this.updateStuff} itemId={i}/>:<Container control={element} select={this.select} update= {this.updateStuff} itemId={i} zoom = {this.state.zoom}/>   
+                        this.state.selected == i ? <Container control={element} selected={"true"} select={this.select} update= {this.updateStuff} itemId={i}  zoom2 = {this.state.zoom}/>:<Container control={element} select={this.select} update= {this.updateStuff} itemId={i}  zoom2 = {this.state.zoom}/>   
                     )
                     else if(element.type === "label")
                     return(
-                        this.state.selected == i ? <Label control={element} selected={"true"} select={this.select} update= {this.updateStuff} itemId={i}/>:<Label control={element} select={this.select} itemId={i} update= {this.updateStuff} zoom = {this.state.zoom}/>
+                        this.state.selected == i ? <Label control={element} selected={"true"} select={this.select} update= {this.updateStuff} itemId={i}  zoom2 = {this.state.zoom}/>:<Label control={element} select={this.select} itemId={i} update= {this.updateStuff}  zoom2 = {this.state.zoom}/>
                    )
                     else
                    return( 
-                    this.state.selected == i ? <Button control={element} selected={"true"} select={this.select} update= {this.updateStuff} itemId={i}/>:<Button control={element} select={this.select} itemId={i} update= {this.updateStuff} zoom = {this.state.zoom}/>
+                    this.state.selected == i ? <Button control={element} selected={"true"} select={this.select} update= {this.updateStuff} itemId={i}  zoom2 = {this.state.zoom}/>:<Button control={element} select={this.select} itemId={i} update= {this.updateStuff}  zoom2 = {this.state.zoom}/>
                    )
                 })
                 }

@@ -24,14 +24,20 @@ class RegisterScreen extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-
+    if(this.state.password.length < 6){
+      this.setState({authError:"Invalid Password Length"})
+    }
+    else{
     const { props, state } = this;
     const { firebase } = props;
     const newUser = { ...state };
-
-    props.register(newUser, firebase);
+    props.register(newUser, firebase);}
   }
 
+  componentDidMount(){
+    this.setState({authError:null});
+  }
+  
   render() {
     const { auth, authError } = this.props;
     console.log("ERROR",authError)
@@ -54,15 +60,15 @@ class RegisterScreen extends Component {
           </div>
           <div className="input-field">
             <label htmlFor="firstName">First Name</label>
-            <input type="text" name="firstName" id="firstName" onChange={this.handleChange} />
+            <input type="text" name="firstName" id="firstName" onChange={this.handleChange} required/>
           </div>
           <div className="input-field">
             <label htmlFor="lastName">Last Name</label>
-            <input type="text" name="lastName" id="lastName" onChange={this.handleChange} />
+            <input type="text" name="lastName" id="lastName" onChange={this.handleChange} required/>
           </div>
           <div className="input-field">
             <button type="submit" className="btn pink lighten-1 z-depth-0">Sign Up</button>
-            {authError ? <div className="red-text center"><p>{authError}</p></div> : null}
+            {this.state.authError ? <div className="red-text center"><p>{this.state.authError}</p></div> : null}
           </div>
         </form>
         <div className="col s6 banner">

@@ -17,7 +17,8 @@ class Input extends React.Component{
                 this.props.control.width= ref.style.width
                 this.props.control.height= ref.style.height
                 this.props.update()
-            }}>
+            }}
+            scale = {this.props.zoom2}>
            <div style={{display:"inline-block"}}>
            <div style={{position:"absolute", left:"0", top:"0",background:"white", width:"7px",height:"7px", border:"1px solid black"}}></div>
             <div style={{position:"absolute", right:"0", top:"0",background:"white", width:"7px",height:"7px", border:"1px solid black"}}></div>
@@ -53,7 +54,8 @@ class Input extends React.Component{
                 this.props.control.width= ref.style.width
                 this.props.control.height= ref.style.height
                 this.props.update()
-            }}>
+            }}
+            scale = {this.props.zoom2}>
             <div style={{display:"inline-block"}}>
             <input className="browser-default" onClick={this.props.select} itemID={this.props.itemId} maxLength="100" type="text" value={control.text} 
             style={

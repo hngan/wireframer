@@ -3,7 +3,6 @@ import {Rnd} from 'react-rnd'
 class Label extends React.Component{
     render(){
         const control = this.props.control;
-        console.log(control)
         if(this.props.selected)
         return(
         <Rnd bounds="parent"
@@ -18,6 +17,7 @@ class Label extends React.Component{
                   this.props.control.height= ref.style.height
                   this.props.update()
               }}    
+              scale = {this.props.zoom2}
         >  
         <div onClick={this.props.select} itemID={this.props.itemId} style={{
              background: control.background,
@@ -31,7 +31,7 @@ class Label extends React.Component{
              width: control.width,
              height:control.height,
              overflow:"hidden",
-             textAlign:"center"
+             textAlign:"center",
         }}>
         <div style={{position:"absolute", left:"0", top:"0",background:"white", width:"7px",height:"7px", border:"1px solid black"}}></div>
         <div style={{position:"absolute", right:"0", top:"0",background:"white", width:"7px",height:"7px", border:"1px solid black"}}></div>
@@ -55,7 +55,9 @@ class Label extends React.Component{
                 this.props.control.width= ref.style.width
                 this.props.control.height= ref.style.height
                 this.props.update()
-            }}>  
+            }}
+            scale = {this.props.zoom2}
+            >  
             <div onClick={this.props.select} itemID={this.props.itemId} style={{
                  background: control.background,
                  fontSize: control.font+"px",
